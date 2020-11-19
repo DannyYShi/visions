@@ -30,7 +30,7 @@ export default function Shop() {
 
   return (
     <main className="photos-page">
-      <div className="list-items">
+      <div className="product">
         {items.map((item) => (
           <Item key={item.item_id} id={item.item_id} items={item} />
         ))}

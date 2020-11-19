@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom'
 import { Context } from '../CartContext';
 import './Cart.css'
+import './ItemDetails.css'
 
 
 /*
@@ -14,37 +16,52 @@ THINGS TO CONSIDER:
 
 export default function Cart() {
 
-  const { removeFromCart, resetCart, cartItems } = useContext(Context)
-  // const getTotalCost = (shoppingCart) => {
-  //   return shoppingCart.reduce((totalCost, { item_price: itemPrice }) => totalCost + parseFloat(itemPrice), 0)
-  // }
-  //const totalCostDisplay = totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" })
-  function handleSubmit(e) {
-    e.preventDefault()
+  const { removeFromCart, resetCart, cartItems, increment, decrement, total } = useContext(Context)
+
+  function handleSubmit() {
     alert('Your order has been placed. Thank you!')
     resetCart()
   }
 
-  return (
-    <main className="cart-page">
-      <h1>SHOPPING CART</h1>
-      <div className='cart'>
-        {cartItems.map((item) => (
-          <div key={Math.random()} className='cart-item'>
-            <img src={`/images/${item.img_file}`}
-              alt={item.item_name}
-              title={item.item_name} />
-            <h3>{item.item_name}</h3>
-            <h4>quantity</h4>
-            <h4>{item.item_price}</h4>
-            <button onClick={() => removeFromCart(item.item_id)}>Remove</button>
-          </div>
-        ))}
-      </div>
-      <h1 className='total-cost'>TOTAL: </h1>
-      <div className='order-button'>
-        <button type='submit' onClick={handleSubmit}>PLACE ORDER</button>
-      </div>
-    </main>
-  );
+  if (cartItems.length === 0) {
+    return <h1>Nothing is in the cart.</h1>
+  }
+  else {
+
+    return (
+      <main className="cart-page">
+        <h1>SHOPPING CART</h1>
+        <div className='shopping-cart'>
+          {cartItems.map((item) => (
+            <div key={Math.random()} className='details cart'>
+              <img src={`/images/${item.img_file}`}
+                alt={item.item_name}
+                title={item.item_name} />
+              <div className='cart-box'>
+                <div className='cart-row'>
+                  <h2>{item.item_name}</h2>
+                  <span>${item.item_price}</span>
+                </div>
+                <p>{item.item_description}</p>
+                <div className="amount">
+                  <button className="count" onClick={() => decrement(item.item_id)}>-</button>
+                  <span>{item.count}</span>
+                  <button className="count" onClick={() => increment(item.item_id)}>+</button>
+                </div>
+
+                <div className='delete' onClick={() => removeFromCart(item.item_id)}>
+                  <i className="fas fa-times" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="total">
+          <Link to='/shop' onClick={handleSubmit}>Place Order</Link>
+          <h3>Total: ${total}</h3>
+        </div>
+      </main>
+    );
+  }
+
 }

@@ -28,12 +28,11 @@ export default function Item(props) {
             title={props.items.item_name}
           />
         </div>
-        <div className="card_content">
-          <p className='item_info'>
-            {props.items.item_name}
-            <br />
-            {"$" + props.items.item_price.toFixed(2)}
-          </p>
+        <div className="box">
+          <div className='row'>
+            <h2>{props.items.item_name}</h2>
+            <span>{"$" + props.items.item_price.toFixed(2)}</span>
+          </div>
         </div>
       </Link>
     </div >

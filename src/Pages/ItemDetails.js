@@ -52,11 +52,6 @@ export default function ItemDetails(props) {
     setQuantity(e.target.value)
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert(`You have added this picture to your cart!`);
-    addToCart(item)
-  }
 
   return (
     <div className="details-page">
@@ -64,29 +59,30 @@ export default function ItemDetails(props) {
         <button>Back to shop</button>
       </Link>
       <h1>ITEM DETAILS</h1>
-      <div className="container" >
+      <div className="details" >
+
         <img
           className='image'
           src={`/images/${item.img_file}`}
           alt={item.item_name}
         />
-      </div>
-      <div className='container'>
-        <h2>{item.item_name}</h2>
-        <h4>{item.item_description}</h4>
-        <h4>{"$" + item.item_price}</h4>
-        <form onSubmit={handleSubmit}>
-          {/* <label>CHOOSE QTY:
-            <select value={quantity} onChange={handleChange}>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-            </select>
-          </label> */}
-          <button className='btn' type='submit'>ADD TO CART</button>
-        </form>
+
+        <div className='box'>
+
+          <div className='row'>
+            <h2>{item.item_name}</h2>
+            <span>{"$" + item.item_price}</span>
+          </div>
+
+          <p>{item.item_description}</p>
+
+          <Link className='cart' to='/cart' onClick={() => addToCart(item)}>
+            ADD TO CART
+            </Link>
+
+
+        </div>
+
       </div>
     </div>
   );
