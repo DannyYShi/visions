@@ -1,9 +1,18 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from '../App';
+import ReactDOM from 'react-dom'
+import App from '../App'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ContextProvider } from '../CartContext';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe(`App`, () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <ContextProvider>
+        <Router>
+          <App />
+        </Router>
+      </ContextProvider>, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+})
