@@ -19,33 +19,43 @@ export default function ContactUs() {
       <h1 className='page_header'>CONTACT US</h1>
 
       <form className='contact_form'>
-        <label>
-          Name:
-           <input
+        <div className='form-input'>
+          <label >Name:</label>
+          <input
+            className='form-label'
+            required
             value={name}
             type='text'
             onChange={(e) => {
               setName(e.target.value);
             }} />
-        </label>
-        <label>
-          Email address:
+        </div>
+
+        <div className='form-input'>
+          <label >Email address:</label>
           <input
+            className='form-label'
+            required
             value={email}
             type='email'
             onChange={(e) => {
               setEmail(e.target.value)
             }} />
-        </label>
-        <label>
+        </div>
+
+        <div className='form-input'>
+          <label >Questions, comments, or concerns:</label>
           <textarea
+            className='form-label'
             value={text}
             type='text'
             placeholder='Please enter any comments, questions, or concerns.'
             onChange={(e) => {
               setText(e.target.value)
             }} />
-        </label>
+        </div>
+
+
         <button onClick={handleSubmit}>
           SUBMIT FORM
           </button>
