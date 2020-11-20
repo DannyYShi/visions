@@ -13,6 +13,7 @@ function ContextProvider({ children }) {
         else {
             newItem['count'] = 1;
             setCartItems(prevItems => [...prevItems, newItem])
+            setTotal(total + newItem.item_price)
         }
     }
 
@@ -32,7 +33,6 @@ function ContextProvider({ children }) {
         })
         setCartItems(cartItems)
         getTotal()
-        console.log(cartItems)
     }
 
     function decrement(id) {
@@ -43,15 +43,14 @@ function ContextProvider({ children }) {
         })
         setCartItems(cartItems)
         getTotal()
-        console.log(cartItems)
     }
 
     function getTotal() {
         setTotal(cartItems.reduce((prev, item) => {
             return prev + (item.item_price * item.count);
         }, 0))
+
     }
-    console.log(total)
 
     return (
         <Context.Provider value={{ addToCart, removeFromCart, cartItems, resetCart, increment, decrement, total }}>

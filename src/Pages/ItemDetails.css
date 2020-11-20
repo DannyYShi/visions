@@ -53,3 +53,10 @@
     padding: 10px 25px;
     display: inline-block;
 }
+
+.fa-arrow-left {
+    font-size: 2rem;
+    display: flex;
+    margin-left: 0.25em;
+    margin-top: 0.25em;
+}

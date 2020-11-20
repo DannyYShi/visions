@@ -24,7 +24,7 @@ export default function Cart() {
   }
 
   if (cartItems.length === 0) {
-    return <h1>Nothing is in the cart.</h1>
+    return <h1 style={{ textAlign: 'center', marginTop: '5em' }}>Nothing is in the cart.</h1>
   }
   else {
 
@@ -57,7 +57,9 @@ export default function Cart() {
           ))}
         </div>
         <div className="total">
-          <Link to='/shop' onClick={handleSubmit}>Place Order</Link>
+          <Link to='/' onClick={handleSubmit}>
+            <button>Place Order</button>
+          </Link>
           <h3>Total: ${total}</h3>
         </div>
       </main>

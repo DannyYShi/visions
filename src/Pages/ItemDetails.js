@@ -46,17 +46,11 @@ export default function ItemDetails(props) {
     loadData();
   }, []);
 
-  const [quantity, setQuantity] = useState('1')
-
-  function handleChange(e) {
-    setQuantity(e.target.value)
-  }
-
 
   return (
     <div className="details-page">
       <Link to='/shop'>
-        <button>Back to shop</button>
+        <i className='fas fa-arrow-left' />
       </Link>
       <h1>ITEM DETAILS</h1>
       <div className="details" >
