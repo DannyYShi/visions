@@ -18,7 +18,7 @@ export default function ContactUs() {
     <div className='contact-us'>
       <h1 className='page_header'>CONTACT US</h1>
 
-      <form className='contact_form'>
+      <form className='contact_form' onSubmit={handleSubmit}>
         <div className='form-input'>
           <label >Name:</label>
           <input
@@ -56,7 +56,7 @@ export default function ContactUs() {
         </div>
 
 
-        <button onClick={handleSubmit}>
+        <button type='submit'>
           SUBMIT FORM
           </button>
       </form>
