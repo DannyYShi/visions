@@ -18,11 +18,6 @@ export default function Cart() {
 
   const { removeFromCart, resetCart, cartItems, increment, decrement, total } = useContext(Context)
 
-  function handleSubmit() {
-    alert('Your order has been placed. Thank you!')
-    resetCart()
-  }
-
   if (cartItems.length === 0) {
     return <h1 style={{ textAlign: 'center', marginTop: '5em' }}>Nothing is in the cart.</h1>
   }
@@ -57,7 +52,7 @@ export default function Cart() {
           ))}
         </div>
         <div className="total">
-          <Link to='/' onClick={handleSubmit}>
+          <Link to='/checkout'>
             <button>Place Order</button>
           </Link>
           <h3>Total: ${total}</h3>

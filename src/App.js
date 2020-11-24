@@ -9,6 +9,7 @@ import ItemDetails from "./Pages/ItemDetails";
 import Cart from "./Pages/Cart";
 import ContactUs from "./Pages/ContactUs";
 import Shop from "./Pages/Shop";
+import OrderForm from "./Pages/OrderForm";
 
 /*
 THINGS TO CONSIDER: 
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/contact-us">
           <ContactUs />
+        </Route>
+        <Route path='/checkout'>
+          <OrderForm />
         </Route>
       </Switch>
     </div>

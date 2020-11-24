@@ -2,19 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-/*
-DESIGN: 
-
-MOBILE & TABLET: 
-1. horizontal 
-2. hamburger dropdown menu for mobile
-3. spread out menu items for tablet?
-
-DESKTOP: 
-1. vertical to the left 
-2. vertical spread out menu items? 
- */
-
 export default function NavBar() {
   const [click, setClick] = useState(false);
 
