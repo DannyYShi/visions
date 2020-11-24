@@ -1,0 +1,36 @@
+.checkout-page {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 2em;
+}
+
+.page-header {
+    margin: 0.5em
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.form-input textarea {
+    box-sizing: border-box;
+    resize: none;
+    height: 15vh;
+}
+
+.order-form button {
+    padding: 0.75em;
+    max-width: 10em;
+    margin-top: 1em;
+}
+
+.form-input{
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}

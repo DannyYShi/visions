@@ -16,7 +16,7 @@ THINGS TO CONSIDER:
 
 export default function Cart() {
 
-  const { removeFromCart, resetCart, cartItems, increment, decrement, total } = useContext(Context)
+  const { removeFromCart, cartItems, increment, decrement, total } = useContext(Context)
 
   if (cartItems.length === 0) {
     return <h1 style={{ textAlign: 'center', marginTop: '5em' }}>Nothing is in the cart.</h1>
