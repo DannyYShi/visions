@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom'
-import config from '../config'
+import { Link } from 'react-router-dom';
+import config from '../config';
 import './ItemDetails.css';
-import { Context } from '../CartContext'
+import { Context } from '../CartContext';
 
 
 
@@ -34,14 +34,14 @@ Things to consider:
 
 export default function ItemDetails(props) {
   const [item, setItem] = useState({});
-  const { addToCart } = useContext(Context)
+  const { addToCart } = useContext(Context);
 
   useEffect(() => {
     const loadData = async () => {
-      const itemID = props.match.params.item_id
+      const itemID = props.match.params.item_id;
       const itemResponse = await fetch(`${config.API_ENDPOINT}/${itemID}`);
       const itemData = await itemResponse.json();
-      setItem(itemData)
+      setItem(itemData);
     };
     loadData();
   }, []);

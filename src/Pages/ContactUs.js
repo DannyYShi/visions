@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import './ContactUs.css'
 
 export default function ContactUs() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [text, setText] = useState('')
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [text, setText] = useState('');
 
   function handleSubmit(e) {
-    setName('')
-    setEmail('')
-    setText('')
-    alert('Thank you for contacting us! We will get in touch with you shortly.')
-    e.preventDefault()
+    setName('');
+    setEmail('');
+    setText('');
+    alert('Thank you for contacting us! We will get in touch with you shortly.');
+    e.preventDefault();
   }
 
   return (

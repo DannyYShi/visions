@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Item from "../Item/Item";
 import "./Shop.css";
-import config from '../config'
+import config from '../config';
 /*
 Things to consider: 
 1. MOBILE-FIRST DESIGN: horizontal header, one column, one photo 

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import { ContextProvider } from './CartContext'
+import { ContextProvider } from './CartContext';
 
 ReactDOM.render(
   <ContextProvider>

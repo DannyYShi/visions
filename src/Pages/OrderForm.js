@@ -1,32 +1,32 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import { Context } from '../CartContext';
 import emailjs from 'emailjs-com';
-import './OrderForm.css'
+import './OrderForm.css';
 
 export default function OrderForm() {
-    const { cartItems, total, resetCart } = useContext(Context)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [text, setText] = useState('')
+    const { cartItems, total, resetCart } = useContext(Context);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [text, setText] = useState('');
 
     let message = cartItems.map(item =>
         `Item: ${item.item_name}, Price: $${item.item_price}, Quantity: ${item.count}`).join('\n\n')
         + '\n\n' + `Total cost: $${total}`;
 
     function resetForm() {
-        setName('')
-        setEmail('')
-        setText('')
-    }
+        setName('');
+        setEmail('');
+        setText('');
+    };
 
     function sendEmail(e) {
         let templateParams = {
             name: name,
             email: email,
             message: message,
-        }
+        };
 
-        e.preventDefault()
+        e.preventDefault();
 
         emailjs.send('service_fgqcamc', 'template_b04co1o', templateParams, 'user_Wohzm5sc0sqQWTWLYWy1Z')
             .then(function (response) {
@@ -38,7 +38,7 @@ export default function OrderForm() {
                 console.log('FAILED...', error);
                 alert('Oops, something went wrong! Please try again.')
             });
-    }
+    };
 
 
 
