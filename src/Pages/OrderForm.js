@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Context } from '../CartContext';
 import emailjs from 'emailjs-com';
 import './OrderForm.css';
+import config from '../config'
 
 export default function OrderForm() {
     const { cartItems, total, resetCart } = useContext(Context);
@@ -12,6 +13,17 @@ export default function OrderForm() {
     let message = cartItems.map(item =>
         `Item: ${item.item_name}, Price: $${item.item_price}, Quantity: ${item.count}`).join('\n\n')
         + '\n\n' + `Total cost: $${total}`;
+
+    const postData = async (url = config.ORDERS_ENDPOINT, data = {}) => {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        });
+        return response.json();
+    };
 
     function resetForm() {
         setName('');
@@ -27,6 +39,13 @@ export default function OrderForm() {
         };
 
         e.preventDefault();
+
+        postData(config.ORDERS_ENDPOINT, {
+            'customer_name': name,
+            'customer_email': email,
+            'total_price': total,
+            'order_summary': message
+        })
 
         emailjs.send('service_fgqcamc', 'template_b04co1o', templateParams, 'user_Wohzm5sc0sqQWTWLYWy1Z')
             .then(function (response) {
@@ -47,39 +66,45 @@ export default function OrderForm() {
             <h1 className='page-header'>Checkout</h1>
             <form className="order-form" onSubmit={sendEmail}>
                 <div className='form-input'>
-                    <label>Name:</label>
-                    <input
-                        className='form-label'
-                        required
-                        value={name}
-                        type='text'
-                        onChange={(e) => {
-                            setName(e.target.value);
-                        }} />
+                    <label>Name:
+                        <br />
+                        <input
+                            className='form-label'
+                            required
+                            value={name}
+                            type='text'
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }} />
+                    </label>
                 </div>
 
                 <div className='form-input'>
-                    <label>Email address:</label>
-                    <input
-                        className='form-label'
-                        required
-                        value={email}
-                        type='email'
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                        }} />
+                    <label>Email address:
+                        <br />
+                        <input
+                            className='form-label'
+                            required
+                            value={email}
+                            type='email'
+                            onChange={(e) => {
+                                setEmail(e.target.value)
+                            }} />
+                    </label>
                 </div>
 
                 <div className='form-input'>
-                    <label>Questions, comments, or concerns:</label>
-                    <textarea
-                        className='form-label'
-                        value={text}
-                        type='text'
-                        placeholder='Please enter any comments, questions, or concerns.'
-                        onChange={(e) => {
-                            setText(e.target.value)
-                        }} />
+                    <label>Questions, comments, or concerns:
+                        <br />
+                        <textarea
+                            className='form-label'
+                            value={text}
+                            type='text'
+                            placeholder='Please enter any comments, questions, or concerns.'
+                            onChange={(e) => {
+                                setText(e.target.value)
+                            }} />
+                    </label>
                 </div>
                 <button type='submit'>
                     Place Order

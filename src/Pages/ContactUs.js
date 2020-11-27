@@ -20,39 +20,45 @@ export default function ContactUs() {
 
       <form className='contact_form' onSubmit={handleSubmit}>
         <div className='form-input'>
-          <label >Name:</label>
-          <input
-            className='form-label'
-            required
-            value={name}
-            type='text'
-            onChange={(e) => {
-              setName(e.target.value);
-            }} />
+          <label>Name:
+             <br />
+            <input
+              className='form-label'
+              required
+              value={name}
+              type='text'
+              onChange={(e) => {
+                setName(e.target.value);
+              }} />
+          </label>
         </div>
 
         <div className='form-input'>
-          <label >Email address:</label>
-          <input
-            className='form-label'
-            required
-            value={email}
-            type='email'
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }} />
+          <label>Email address:
+           <br />
+            <input
+              className='form-label'
+              required
+              value={email}
+              type='email'
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }} />
+          </label>
         </div>
 
         <div className='form-input'>
-          <label >Questions, comments, or concerns:</label>
-          <textarea
-            className='form-label'
-            value={text}
-            type='text'
-            placeholder='Please enter any comments, questions, or concerns.'
-            onChange={(e) => {
-              setText(e.target.value)
-            }} />
+          <label>Questions, comments, or concerns:
+           <br />
+            <textarea
+              className='form-label'
+              value={text}
+              type='text'
+              placeholder='Please enter any comments, questions, or concerns.'
+              onChange={(e) => {
+                setText(e.target.value)
+              }} />
+          </label>
         </div>
 
 

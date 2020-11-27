@@ -16,6 +16,14 @@
     font-size: 1rem;
 }
 
+.form-label {
+    width: 100%;
+    padding:10px;
+    border-radius:10px;
+    border: 1px solid;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
 .form-input textarea {
     box-sizing: border-box;
     resize: none;
@@ -32,5 +40,6 @@
     margin: 0.5rem;
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 60vw;
+    max-width: 30rem;
 }
