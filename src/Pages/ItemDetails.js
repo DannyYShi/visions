@@ -48,9 +48,6 @@ export default function ItemDetails(props) {
     loadData();
   }, []);
 
-
-  console.log(item.img_file)
-
   return (
     <div className="details-page">
       <Link to='/shop'>
