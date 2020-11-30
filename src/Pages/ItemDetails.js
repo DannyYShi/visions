@@ -34,6 +34,7 @@ Things to consider:
 
 export default function ItemDetails(props) {
   const [item, setItem] = useState({});
+  const [image, setImage] = useState('')
   const { addToCart } = useContext(Context);
 
   useEffect(() => {
@@ -42,10 +43,13 @@ export default function ItemDetails(props) {
       const itemResponse = await fetch(`${config.API_ENDPOINT}/${itemID}`);
       const itemData = await itemResponse.json();
       setItem(itemData);
+      setImage(itemData.img_file)
     };
     loadData();
   }, []);
 
+
+  console.log(item.img_file)
 
   return (
     <div className="details-page">
@@ -54,13 +58,13 @@ export default function ItemDetails(props) {
       </Link>
       <h1>ITEM DETAILS</h1>
       <div className="details" >
-
-        <img
-          className='image'
-          src={`/images/${item.img_file}`}
-          alt={item.item_name}
-        />
-
+        {image &&
+          <img
+            className='image'
+            src={`/images/${image}`}
+            alt={item.item_name}
+          />
+        }
         <div className='box'>
 
           <div className='row'>

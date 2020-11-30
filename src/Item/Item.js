@@ -23,7 +23,7 @@ export default function Item(props) {
         <div className="item_card">
           <img
             className='item_image'
-            src={`/images/${props.items.img_file}`}
+            src={`images/${props.items.img_file}`}
             alt={props.items.item_name}
             title={props.items.item_name}
           />
